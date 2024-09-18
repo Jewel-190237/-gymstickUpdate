@@ -31,3 +31,37 @@
     display: none !important;
   }
 }
+.status {
+  clip-path: path(
+    "M112.947 8.00336L6.85383 113.652C5.99761 114.504 4.79645 114.924 3.59513 114.794C1.55795 114.573 0.00683969 112.847 0.0158421 110.798L0.482597 4.55706C0.492236 2.36313 2.26727 0.586411 4.46118 0.574686L109.521 0.0132488C111.04 0.00513254 112.432 0.857852 113.115 2.2144L113.697 3.37021C114.474 4.91444 114.172 6.7834 112.947 8.00336Z"
+  );
+}
+
+
+// shop related styles
+
+.ant-pagination {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  margin: auto;
+  color: #FFFFFF;
+}
+
+.ant-pagination .ant-pagination-item {
+  border: 1px solid #D9D9D9;
+}
+
+.ant-pagination .ant-pagination-item-active {
+  background-color: #E67529;
+  color: #FFFFFF;
+  border: none;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: #FFFFFF;
+}
+
+.ant-pagination .ant-pagination-item-active a:hover {
+  color: #FFFFFF;
+}
