@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "partials/status";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap");
+
+.container {
+  @apply max-w-[1320px] xl:px-0 px-4 mx-auto;
+}
+
+.largeHeading {
+  @apply xl:text-[64px] lg:text-[40px] md:text-[32px] text-2xl  xl:leading-[83.2px] leading-[50px] font-bold;
+}
+.heading {
+  @apply xl:text-5xl lg:text-[40px] md:text-2xl text-xl xl:leading-[58.51px] lg:leading-[50px] font-bold;
+}
+
+.heading2 {
+  @apply text-lg font-bold leading-[21.6px];
+}
+.description {
+  @apply text-base leading-[25.6px];
+}
+.box-shadow {
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.selectLabel {
+  .ant-form-item-label {
+    display: none !important;
+  }
+}
