@@ -245,7 +245,7 @@ const Shop = () => {
         <div className='container lg:mt-[120px] mt-[60px]'>
             <BannerTitle className={"items-center"} title="here you can buy any thing" subtitle={"Shop"} />
             <div className=" mx-auto mt-[56px]">
-                <div className={`flex border w-full overflow-x-auto mx-auto rounded sm:w-[566.5px] xl:w-fit  hide-scrollbar `}>
+                <div className={`flex border w-full overflow-x-auto mx-auto rounded sm:w-[566.5px] xl:w-fit  hide-scrollbar`}>
                     {displayedCategories.map((category) => (
                         <button
                             key={category}

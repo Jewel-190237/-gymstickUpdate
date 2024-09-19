@@ -11,7 +11,10 @@ module.exports = {
                 primary: "#E67529",
                 textMain: "#2B2B2B",
                 textBody: "#534C4C",
-            }
+            },
+            boxShadow: {
+                'custom-light': '0px 0px 20px 0px rgba(0, 0, 0, 0.10)',
+              },
         },
     },
     plugins: [],

@@ -70,7 +70,6 @@ const Navbar: React.FC = () => {
         <a href="/" className="lg:mr-80">
           <Image src="/logo.png" height={47} width={298} alt="logoImage" className='w-56 h-12' />
         </a>
-
         <div className="lg:hidden relative left-10">
           <button onClick={toggleMenu} className="text-white focus:outline-none">
             {isOpen ? <IoMdCloseCircle className="text-3xl" /> : <GiHamburgerMenu className="text-3xl" />}

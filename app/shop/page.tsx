@@ -237,6 +237,7 @@ const products = [
 const Shop: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
+    const [searchVisible, setSearchVisible] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('Select Category');
     const pageSize = 8;
 
@@ -256,38 +257,66 @@ const Shop: React.FC = () => {
         setSelectedCategory(key === 'All' ? 'Select Category' : key);
         setCurrentPage(1);
     };
-
     return (
         <section className=''>
             <BasicHeader heading='Shop' subHeading='Home' />
-            <div className='max-w-[1320px] mx-auto mt-[140px] mb-14'>
-                <div className='flex flex-col md:flex-row border-0 md:border rounded px-0 md:mx-8 lg:mx-0'>
-                    <div className='w-[80%] mx-auto md:w-[33%] lg:w-[25%] flex md:space-x-3 lg:space-x-6 py-[22px] text-white items-center bg-primary'>
-                        <RiMenu2Fill className='ml-6' />
-                        <p className='capitalize text-[16px] font-medium'>browse all categories</p>
+            <div className='max-w-[1320px] mx-auto'>
+
+                <div className='flex flex-col md:flex-row border w-full mx-auto rounded'>
+                    {/* Left Menu Icon */}
+                    <div className='flex-none w-[310px] flex space-x-6 py-[22px] text-white items-center bg-primary'>
+                        <RiMenu2Fill className='ml-6 hidden md:block' />
+                        <p className='capitalize text-[16px] font-medium hidden md:block'>browse all categories</p>
                     </div>
-                    <div className='mt-3 md:mt-0 w-[80%] mx-auto md:w-[34%] lg:w-[58%] border md:border-0'>
+
+                    {/* Search Bar for Large Screens */}
+                    <div className='flex-none w-[780px] border md:border-0 hidden md:block'>
                         <Input
                             className='py-[22px] text-[20px] border-none'
                             placeholder="search all product"
-                            prefix={<SearchOutlined className='ml-2 mr-4 md:ml-5 lg:ml-12 text-2xl' />}
+                            prefix={<SearchOutlined className='ml-2 mr-4 text-2xl' />}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
-                    <div className='mt-3 md:mt-0 w-[80%] mx-auto flex items-center md:w-[33%] lg:w-[17%] border md:border-t-0 md:border-b-0 border-l md:border-r-0'>
+
+                    {/* Dropdown for Large Screens */}
+                    <div className='flex-none w-[230px] items-center border md:border-t-0 md:border-b-0 border-l md:border-r-0 hidden md:flex'>
                         <Dropdown menu={{ items, onClick: handleMenuClick }} trigger={['hover']} overlayClassName='category-dropdown'>
-                            <Space className='ml-5 md:ml-10 text-[16px] space-x-4 cursor-pointer'>
+                            <Space className='ml-5 text-[16px] space-x-4 cursor-pointer'>
                                 <span className="capitalize">{selectedCategory}</span>
                                 <DownOutlined />
                             </Space>
                         </Dropdown>
                     </div>
+
+                    {/* Icons for Small Screens */}
+                    <div className='px-10 flex justify-between text-4xl md:hidden items-center m-4 border-4 border-green-600 space-x-4 py-4 bg-primary'>
+                        <RiMenu2Fill className='text-white cursor-pointer bg-primary' />
+                        <SearchOutlined onClick={() => setSearchVisible(!searchVisible)} className='text-white bg-primary cursor-pointer' />
+                        <Dropdown menu={{ items, onClick: handleMenuClick }} trigger={['hover']} overlayClassName='category-dropdown'>
+                            <DownOutlined className='text-white bg-primary cursor-pointer' />
+                        </Dropdown>
+                    </div>
+
+                    {/* Search Bar for Small Screens */}
+                    {searchVisible && (
+                        <div className='flex-none w-full border md:hidden'>
+                            <Input
+                                className='py-[22px] text-[20px] border-none'
+                                placeholder="search all product"
+                                prefix={<SearchOutlined className='ml-2 mr-4 text-2xl' />}
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                        </div>
+                    )}
                 </div>
+
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14'>
                     {paginatedProducts.length ? (
                         paginatedProducts.map((product, index) => (
-                            <Link key={index} href={`/shop/${product._id}`} passHref>
+                            <Link key={index} href={`/shop/_${product._id}`} passHref>
                                 <div>
                                     <ShopCard key={product._id} data={product} />
                                 </div>
@@ -297,14 +326,8 @@ const Shop: React.FC = () => {
                         <div className='col-span-full text-center'>No products found</div>
                     )}
                 </div>
-                <Pagination
-                    className='!mt-12'
-                    align='center'
-                    current={currentPage}
-                    pageSize={pageSize}
-                    total={filteredProducts.length}
-                    onChange={setCurrentPage}
-                />
+                <Pagination className='!mt-[50px]' align='center'
+                    current={currentPage} pageSize={pageSize} total={filteredProducts.length} onChange={setCurrentPage} />
             </div>
         </section>
     );
