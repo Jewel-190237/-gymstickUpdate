@@ -1,5 +1,5 @@
 import React from 'react';
-// import Hero from '../../components/home/hero';
+import Hero from '../../components/home/hero';
 // import Features from '../../components/home/feature';
 // import AboutUs from '../../components/home/about-us';
 // import Services from '../../components/home/services';
@@ -12,8 +12,8 @@ import React from 'react';
 const Home = () => {
     return (
         <>
-            {/* <Hero />
-            <Features/>
+             <Hero />
+           {/* <Features/>
             <AboutUs/>
             <Services/>
             <BMI/>

@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='   hidden lg:top-[125px] 2xl:h-[86%] lg:h-[83%] top-16 hero-img  h-[60vh] relative  w-fit md:flex flex-col justify-end   '>
+                    <div className='   hidden lg:top-[125px] 2xl:h-[86%] lg:h-[83%] top-16 hero-img  h-[60vh] relative w-fit md:flex flex-col justify-end   '>
                         <Image src={'/hero.png'} width={600} height={400} alt='hero' className='w-[788px] h-full ' />
                     </div>
                 </div>

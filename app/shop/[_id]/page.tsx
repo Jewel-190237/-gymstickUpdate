@@ -9,8 +9,80 @@ import Link from 'next/link';
 import { FaXTwitter } from 'react-icons/fa6';
 import BasicHeader from '../../../components/common/basic-header';
 import ShopCard from '../../../components/home/shop-card';
-const products = [{ status: 'Sale Now', rate: 4, name: 'whey protine', price: 80.89, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sold Out', rate: 4, name: 'whey protine', price: 30.67, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sold Out', rate: 4, name: 'whey protine', price: 30.67, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sale Now', rate: 4, name: 'whey protine', price: 80.89, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sold Out', rate: 4, name: 'whey protine', price: 30.67, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sale Now', rate: 4, name: 'whey protine', price: 80.89, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sold Out', rate: 4, name: 'whey protine', price: 30.67, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sale Now', rate: 4, name: 'whey protine', price: 80.89, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sale Now', rate: 4, name: 'whey protine', price: 80.89, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sold Out', rate: 4, name: 'whey protine', price: 30.67, image: '/images/ShopCard/shopCardImage.png' }, { status: 'Sold Out', rate: 4, name: 'whey protine', price: 30.67, image: '/images/ShopCard/shopCardImage.png' },]
-
+const products = [
+    {
+        _id: "64f0cabe65f1b2b6c5e432a2",
+        status: "Sold Out",
+        rate: 4,
+        name: "dumbbell set",
+        price: 50.0,
+        image: "/whey.png",
+        category: "dumbbell",
+    },
+    {
+        _id: "64f0cabe65f1b2b6c5e432a3",
+        status: "Sold Out",
+        rate: 5,
+        name: "adjustable dumbbell",
+        price: 70.5,
+        image: "/whey.png",
+        category: "dumbbell",
+    },
+    {
+        _id: "64f0cabe65f1b2b6c5e432a4",
+        status: "Sale Now",
+        rate: 4,
+        name: "hex dumbbell",
+        price: 90.99,
+        image: "/whey.png",
+        category: "dumbbell",
+    },
+    {
+        _id: "64f0cabe65f1b2b6c5e432a5",
+        status: "Sold Out",
+        rate: 3,
+        name: "vinyl dumbbell",
+        price: 35.0,
+        image: "/whey.png",
+        category: "dumbbell",
+    },
+    {
+        _id: "64f0cabe65f1b2b6c5e432a6",
+        status: "Sale Now",
+        rate: 4,
+        name: "gym outfit",
+        price: 120.0,
+        image: "/whey.png",
+        category: "outfit",
+    },
+    {
+        _id: "64f0cabe65f1b2b6c5e432a7",
+        status: "Sold Out",
+        rate: 4,
+        name: "casual outfit",
+        price: 60.0,
+        image: "/whey.png",
+        category: "outfit",
+    },
+    {
+        _id: "64f0cabe65f1b2b6c5e432a8",
+        status: "Sale Now",
+        rate: 5,
+        name: "sports outfit",
+        price: 85.5,
+        image: "/whey.png",
+        category: "outfit",
+    },
+    {
+        _id: "64f0cabe65f1b2b6c5e432a9",
+        status: "Sold Out",
+        rate: 3,
+        name: "yoga outfit",
+        price: 45.3,
+        image: "/whey.png",
+        category: "outfit",
+    },
+]
 const Wheyprotein: React.FC = () => {
     const [activeTab, setActiveTab] = useState('description');
     const [weight, setWeight] = useState('1.5');
@@ -33,7 +105,7 @@ const Wheyprotein: React.FC = () => {
             <div className='max-w-[1320px] mx-auto mt-[140px] text1'>
                 <div className='flex flex-col md:flex-row gap-6'>
                     <div className='flex-1'>
-                        <Image src='/images/ShopCard/shopCardImage.png' alt="shop" width={648} height={640} />
+                        <Image src='/whey.png' alt="shop" width={648} height={640} />
                     </div>
                     <div className='flex-1'>
                         <div className='flex flex-col lg:flex-row lg:items-center justify-between'>
@@ -54,19 +126,13 @@ const Wheyprotein: React.FC = () => {
                         <p className='mt-10 text-[18px] font-medium'>Size: {weight} KG</p>
                         <div className='mt-4 flex items-center space-x-2 md:space-x-6'>
                             {productWeight.map(size => (
-                                <button
-                                    key={size}
-                                    onClick={() => handleWeightChange(size)}
-                                    className={`product-button text-[12px] md:text-[16px] px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 ${activeButton === size ? '!bg-primary !text-white' : ''}`}
-                                >
+                                <button key={size} onClick={() => handleWeightChange(size)} className={`product-button text-[12px] md:text-[16px] px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 ${activeButton === size ? '!bg-primary !text-white' : ''}`} >
                                     {size} KG
                                 </button>
                             ))}
                         </div>
                         <div className='mt-10 flex flex-col lg:flex-row items-center lg:space-x-6'>
-                            <Link className='w-full' href='/checkout'><button className='w-full product-button  py-4 flex justify-center items-center space-x-[10px]'>
-                                <span>Buy Now</span> <BsHandbag />
-                            </button></Link>
+                            <Link className='w-full' href='/checkout'><button className='w-full product-button  py-4 flex justify-center items-center space-x-[10px]'> <span>Buy Now</span> <BsHandbag /></button></Link>
                             <button className='w-full mt-6 lg:mt-0 product-button py-4 flex items-center justify-center space-x-[10px]' onClick={() => setIsModalVisible(true)}>
                                 <span>Add to Cart</span> <BsCartPlus size={20} />
                             </button>
@@ -100,8 +166,8 @@ const Wheyprotein: React.FC = () => {
                         {activeTab === 'description' && <p className='shop-style border border-[#D9D9D9] py-10 px-7 rounded'>
                             Description It is a long established to fact that is one reader will be the distracted by the readable content of the page when this looking at its layout. The point of using Lorem Ipsum is that it is has normal distribution of letters, as opposed to using contents here. Lorem is an long established to fact that is one reader will be the distracted by the readable content.Description It is a long established to fact that is one reader will be the distracted by the readable content of the page when this looking at its layout. The point of using Lorem Ipsum is that it is has normal distribution of letters, as opposed to using contents here. Lorem is an long established to fact that is one reader will be the distracted by the readable content.
                         </p>}
-                        {activeTab === 'review' && 'kk'}   
-                         {/* <Review /> */}
+                        {activeTab === 'review' && 'kk'}
+                        {/* <Review /> */}
                     </div>
                     <div className='mt-[140px]'>
                         <p className='text-[28px] font-semibold'>Related Products</p>
@@ -110,24 +176,11 @@ const Wheyprotein: React.FC = () => {
                                 <ShopCard key={index} data={product} />
                             ))}
                         </div>
-                        <Pagination
-                        align='center'
-                            current={currentPage}
-                            pageSize={pageSize}
-                            total={totalProduct}
-                            onChange={(page) => setCurrentPage(page)}
-                            className='!mt-12'
-                        />
+                        <Pagination align='center' current={currentPage} pageSize={pageSize} total={totalProduct} onChange={(page) => setCurrentPage(page)} className='!mt-12' />
                     </div>
                 </div>
             </div>
-            <Modal
-                title="Success"
-                visible={isModalVisible}
-                onOk={() => setIsModalVisible(false)}
-                onCancel={() => setIsModalVisible(false)}
-                footer={null}
-            >
+            <Modal title="Success" visible={isModalVisible} onOk={() => setIsModalVisible(false)} onCancel={() => setIsModalVisible(false)} footer={null}>
                 <div className="flex items-center justify-center flex-col w-full">
                     <p className="text-primary text-3xl mb-4">✔</p>
                     <p>Impact Whey Protein has been added to your cart.</p>
