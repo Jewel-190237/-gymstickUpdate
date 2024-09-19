@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { FaXTwitter } from 'react-icons/fa6';
 import BasicHeader from '../../../components/common/basic-header';
 import ShopCard from '../../../components/home/shop-card';
+import Review from '../../../components/common/Review';
 const products = [
     {
         _id: "64f0cabe65f1b2b6c5e432a2",
@@ -100,29 +101,29 @@ const Wheyprotein: React.FC = () => {
         setActiveButton(newWeight);
     };
     return (
-        <section className='px-8 lg:px-0'>
+        <section className=''>
             <BasicHeader heading={products[0].name} subHeading='Home' />
-            <div className='max-w-[1320px] mx-auto mt-[140px] text1'>
-                <div className='flex flex-col md:flex-row gap-6'>
+            <div className='max-w-[1320px] mx-auto text1 px-8 lg:px-0 mt-0 md:mt-4'>
+                <div className='flex flex-col md:flex-row space-x-6'>
                     <div className='flex-1'>
                         <Image src='/whey.png' alt="shop" width={648} height={640} />
                     </div>
-                    <div className='flex-1'>
+                    <div className='flex-1 font-poppins text-textMain'>
                         <div className='flex flex-col lg:flex-row lg:items-center justify-between'>
-                            <p className='font-normal text-[18px]'>Protein Provider</p>
+                            <p className='font-normal  text-[18px]'>Protein Provider</p>
                             <div className='flex items-center space-x-5  md:mt-4 lg:mt-0'>
                                 <Rate className='text-primary' defaultValue={5} />
-                                <p className='text-[16px] font-normal'>Review(3)</p>
+                                <p className='text-[16px]  font-normal'>Review(3)</p>
                             </div>
                         </div>
                         <h2 className='mt-6 font-semibold text-[28px] capitalize'>Impact Whey Protein</h2>
                         <div className='mt-6 flex items-center space-x-6 text-[18px] font-semibold'>
                             <p className='text-primary'><del>$120.99</del></p>
                             <p>$80.99</p>
-                            <p className='text-[16px] font-normal capitalize'>(In stock)</p>
+                            <p className='description capitalize'>(In stock)</p>
                         </div>
-                        <p className='mt-[40px] text-[18px] font-normal'>Description</p>
-                        <p className='mt-6 shop-style'>Impact Whey Protein is a high-quality, fast-absorbing protein powder that supports muscle growth and recovery. Packed with essential amino acids, it is perfect for post-workout nutrition or boosting daily protein intake. Ideal for athletes and fitness enthusiasts looking to build strength and improve performance.</p>
+                        <p className='mt-10 text-[18px] font-normal'>Description</p>
+                        <p className='mt-6 description'>Impact Whey Protein is a high-quality, fast-absorbing protein powder that supports muscle growth and recovery. Packed with essential amino acids, it is perfect for post-workout nutrition or boosting daily protein intake. Ideal for athletes and fitness enthusiasts looking to build strength and improve performance.</p>
                         <p className='mt-10 text-[18px] font-medium'>Size: {weight} KG</p>
                         <div className='mt-4 flex items-center space-x-2 md:space-x-6'>
                             {productWeight.map(size => (
@@ -150,7 +151,7 @@ const Wheyprotein: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className='mt-[140px]'>
+                <div className='mt-[75px] md:mt-[148px]'>
                     <div className="flex space-x-3 md:space-x-[35px]">
                         {tabs.map(tab => (
                             <button
@@ -163,13 +164,13 @@ const Wheyprotein: React.FC = () => {
                         ))}
                     </div>
                     <div className="mt-10">
-                        {activeTab === 'description' && <p className='shop-style border border-[#D9D9D9] py-10 px-7 rounded'>
+                        {activeTab === 'description' && <p className='description border  border-[#D9D9D9] !text-[#2B2B2BCC] py-10 px-7 rounded'>
                             Description It is a long established to fact that is one reader will be the distracted by the readable content of the page when this looking at its layout. The point of using Lorem Ipsum is that it is has normal distribution of letters, as opposed to using contents here. Lorem is an long established to fact that is one reader will be the distracted by the readable content.Description It is a long established to fact that is one reader will be the distracted by the readable content of the page when this looking at its layout. The point of using Lorem Ipsum is that it is has normal distribution of letters, as opposed to using contents here. Lorem is an long established to fact that is one reader will be the distracted by the readable content.
                         </p>}
-                        {activeTab === 'review' && 'kk'}
-                        {/* <Review /> */}
+                        {activeTab === 'review' &&  <Review /> }
+                        
                     </div>
-                    <div className='mt-[140px]'>
+                    <div className='mt-[70px] md:mt-[140px]'>
                         <p className='text-[28px] font-semibold'>Related Products</p>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6'>
                             {paginatedProducts.map((product, index) => (
