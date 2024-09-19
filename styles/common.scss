@@ -10,8 +10,9 @@
 }
 
 .largeHeading {
-  @apply xl:text-[64px] lg:text-[40px] md:text-[32px] text-2xl  xl:leading-[83.2px] leading-[50px] font-bold;
+  @apply xl:text-[64px] lg:text-[40px] md:text-[32px] text-2xl xl:leading-[83.2px] leading-[50px] font-bold;
 }
+
 .heading {
   @apply xl:text-5xl lg:text-[40px] md:text-2xl text-xl xl:leading-[58.51px] lg:leading-[50px] font-bold;
 }
@@ -19,9 +20,11 @@
 .heading2 {
   @apply text-lg font-bold leading-[21.6px];
 }
+
 .description {
   @apply text-base leading-[25.6px];
 }
+
 .box-shadow {
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
 }
@@ -31,10 +34,10 @@
     display: none !important;
   }
 }
+
 .status {
-  clip-path: path(
-    "M112.947 8.00336L6.85383 113.652C5.99761 114.504 4.79645 114.924 3.59513 114.794C1.55795 114.573 0.00683969 112.847 0.0158421 110.798L0.482597 4.55706C0.492236 2.36313 2.26727 0.586411 4.46118 0.574686L109.521 0.0132488C111.04 0.00513254 112.432 0.857852 113.115 2.2144L113.697 3.37021C114.474 4.91444 114.172 6.7834 112.947 8.00336Z"
-  );
+  clip-path: path("M112.947 8.00336L6.85383 113.652C5.99761 114.504 4.79645 114.924 3.59513 114.794C1.55795 114.573 0.00683969 112.847 0.0158421 110.798L0.482597 4.55706C0.492236 2.36313 2.26727 0.586411 4.46118 0.574686L109.521 0.0132488C111.04 0.00513254 112.432 0.857852 113.115 2.2144L113.697 3.37021C114.474 4.91444 114.172 6.7834 112.947 8.00336Z"
+    );
 }
 
 
@@ -79,12 +82,14 @@
   border-radius: 0.25rem;
   border: 1px solid #D9D9D9;
 }
-.process-button:hover{
+
+.process-button:hover {
   transform: scale(1.05);
   color: white;
   background-color: #E67529;
   border: none;
 }
+
 .card-button {
   padding: 16px 32px;
   transition: transform 0.3s;
@@ -97,18 +102,20 @@
   border-radius: 0.25rem;
   border: 1px solid #D9D9D9;
 }
-.card-button:hover{
+
+.card-button:hover {
   transform: scale(1.05);
   color: white;
   background-color: #E67529;
   border: none;
 }
+
 :where(.css-dev-only-do-not-override-qnu6hi).ant-input-outlined:hover {
   border-color: #534C4C;
   box-shadow: none;
- }
+}
 
- .product-button {
+.product-button {
   border-radius: 0.25rem;
   background-color: white;
   font-size: 16px;
@@ -143,4 +150,11 @@
   background-color: #E67529;
 }
 
-
+.description {
+  color: #534C4C;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%;
+  text-align: justify;
+}

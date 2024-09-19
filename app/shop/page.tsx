@@ -16,6 +16,7 @@ const items: MenuProps['items'] = [
     { label: 'Shoes', key: 'shoes' },
     { label: 'Bags', key: 'bags' },
 ];
+
 const products = [
     {
         _id: "64f0cabe65f1b2b6c5e432a2",
@@ -234,6 +235,7 @@ const products = [
         category: "shoes",
     },
 ];
+
 const Shop: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
@@ -253,53 +255,39 @@ const Shop: React.FC = () => {
 
     const paginatedProducts = filteredProducts.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
-    const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
-        setSelectedCategory(key === 'All' ? 'Select Category' : key);
-        setCurrentPage(1);
-    };
     return (
         <section className=''>
             <BasicHeader heading='Shop' subHeading='Home' />
-            <div className='max-w-[1320px] mx-auto'>
-
+            <div className='max-w-[1320px] mx-auto px-8 lg:px-0 mt-4'>
                 <div className='flex flex-col md:flex-row border w-full mx-auto rounded'>
-                    {/* Left Menu Icon */}
-                    <div className='flex-none w-[310px] flex space-x-6 py-[22px] text-white items-center bg-primary'>
+                    <div className='flex-none w-[310px] hidden md:flex space-x-6 py-[22px] text-white items-center bg-primary'>
                         <RiMenu2Fill className='ml-6 hidden md:block' />
                         <p className='capitalize text-[16px] font-medium hidden md:block'>browse all categories</p>
                     </div>
-
-                    {/* Search Bar for Large Screens */}
-                    <div className='flex-none w-[780px] border md:border-0 hidden md:block'>
+                    <div className='flex-1 border md:border-0 hidden md:block'>
                         <Input
                             className='py-[22px] text-[20px] border-none'
                             placeholder="search all product"
-                            prefix={<SearchOutlined className='ml-2 mr-4 text-2xl' />}
+                            prefix={<SearchOutlined className='ml-12 mr-4 text-2xl' />}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
-
-                    {/* Dropdown for Large Screens */}
-                    <div className='flex-none w-[230px] items-center border md:border-t-0 md:border-b-0 border-l md:border-r-0 hidden md:flex'>
-                        <Dropdown menu={{ items, onClick: handleMenuClick }} trigger={['hover']} overlayClassName='category-dropdown'>
-                            <Space className='ml-5 text-[16px] space-x-4 cursor-pointer'>
+                    <div className='flex-none w-[240px] items-center border md:border-t-0 md:border-b-0 border-l md:border-r-0 hidden md:flex'>
+                        <Dropdown menu={{ items, onClick: ({ key }) => { setSelectedCategory(key === 'All' ? 'Select Category' : key); setCurrentPage(1); }}} trigger={['hover']}>
+                            <Space className='ml-10 text-[16px] space-x-4 cursor-pointer'>
                                 <span className="capitalize">{selectedCategory}</span>
                                 <DownOutlined />
                             </Space>
                         </Dropdown>
                     </div>
-
-                    {/* Icons for Small Screens */}
-                    <div className='px-10 flex justify-between text-4xl md:hidden items-center m-4 border-4 border-green-600 space-x-4 py-4 bg-primary'>
-                        <RiMenu2Fill className='text-white cursor-pointer bg-primary' />
-                        <SearchOutlined onClick={() => setSearchVisible(!searchVisible)} className='text-white bg-primary cursor-pointer' />
-                        <Dropdown menu={{ items, onClick: handleMenuClick }} trigger={['hover']} overlayClassName='category-dropdown'>
-                            <DownOutlined className='text-white bg-primary cursor-pointer' />
+                    <div className='px-10 flex justify-between text-4xl md:hidden items-center py-4 bg-primary'>
+                        <RiMenu2Fill className='text-white' />
+                        <SearchOutlined onClick={() => setSearchVisible(!searchVisible)} className='text-white cursor-pointer' />
+                        <Dropdown menu={{ items, onClick: ({ key }) => { setSelectedCategory(key === 'All' ? 'Select Category' : key); setCurrentPage(1); }}} trigger={['hover']}>
+                            <DownOutlined className='text-white text-3xl cursor-pointer' />
                         </Dropdown>
                     </div>
-
-                    {/* Search Bar for Small Screens */}
                     {searchVisible && (
                         <div className='flex-none w-full border md:hidden'>
                             <Input
@@ -312,22 +300,18 @@ const Shop: React.FC = () => {
                         </div>
                     )}
                 </div>
-
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14'>
                     {paginatedProducts.length ? (
-                        paginatedProducts.map((product, index) => (
-                            <Link key={index} href={`/shop/_${product._id}`} passHref>
-                                <div>
-                                    <ShopCard key={product._id} data={product} />
-                                </div>
+                        paginatedProducts.map(product => (
+                            <Link key={product._id} href={`/shop/_${product._id}`} passHref>
+                                <ShopCard data={product} />
                             </Link>
                         ))
                     ) : (
                         <div className='col-span-full text-center'>No products found</div>
                     )}
                 </div>
-                <Pagination className='!mt-[50px]' align='center'
-                    current={currentPage} pageSize={pageSize} total={filteredProducts.length} onChange={setCurrentPage} />
+                <Pagination align='center' className='!mt-[50px]' current={currentPage} pageSize={pageSize} total={filteredProducts.length} onChange={setCurrentPage} />
             </div>
         </section>
     );
