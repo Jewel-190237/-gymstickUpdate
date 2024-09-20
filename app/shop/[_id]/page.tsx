@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { FaXTwitter } from 'react-icons/fa6';
 import BasicHeader from '../../../components/common/basic-header';
 import ShopCard from '../../../components/home/shop-card';
-import Review from '../../../components/common/Review';
+import Review from '../../../components/card/Review';
 const products = [
     {
         _id: "64f0cabe65f1b2b6c5e432a2",
@@ -133,7 +133,7 @@ const Wheyprotein: React.FC = () => {
                             ))}
                         </div>
                         <div className='mt-10 flex flex-col lg:flex-row items-center lg:space-x-6'>
-                            <Link className='w-full' href='/checkout'><button className='w-full product-button  py-4 flex justify-center items-center space-x-[10px]'> <span>Buy Now</span> <BsHandbag /></button></Link>
+                            <Link className='w-full' href='/checkout'><button className='w-full product-button  py-4 flex justify-center items-center space-x-[10px]'> <span>Buy Now</span> <BsHandbag size={20} /></button></Link>
                             <button className='w-full mt-6 lg:mt-0 product-button py-4 flex items-center justify-center space-x-[10px]' onClick={() => setIsModalVisible(true)}>
                                 <span>Add to Cart</span> <BsCartPlus size={20} />
                             </button>
