@@ -1,33 +1,56 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import BasicHeader from '../../components/common/basic-header';
 import CheckOutCard from '../../components/card/CheckOutCard';
-import { Form } from 'antd';
+import { Form, RadioChangeEvent, Radio } from 'antd';
 import FormInput from '../../components/form/input';
-import Button from '../../components/common/button';
-const products = [{ image: '/whey.png', name: 'impact whey protein', price: 80.89, size: 1, quantity: 3 }, { image: '/whey.png', name: 'impact whey protein', price: 80.89, size: 1, quantity: 3 }];
-const page: React.FC = () => {
+
+const products = [
+    { image: '/whey.png', name: 'impact whey protein', price: 80.89, size: 1, quantity: 3 },
+    { image: '/whey.png', name: 'impact whey protein', price: 80.89, size: 1, quantity: 3 }
+];
+
+const Page: React.FC = () => {
+    const [value, setValue] = useState(1);
     const [form] = Form.useForm();
-    const onFinish = (values: { weight: number; height: number }) => {
+    
+    const onFinish = (values: { FName: string; LName: string; email: string; phone: number; location: string; city: string; PCode: string }) => {
+        console.log(values, value);
         form.resetFields();
     };
+
+    const onChange = (e: RadioChangeEvent) => {
+        console.log('radio checked', e.target.value);
+        setValue(e.target.value);
+    };
+
+    const handlePlaceOrder = () => {
+        form.validateFields()
+            .then(values => {
+                onFinish(values);
+            })
+            .catch(info => {
+                console.log('Validate Failed:', info);
+            });
+    };
+
     return (
-        <section className=''>
-            <BasicHeader heading='check out' subHeading='home' />
+        <section>
+            <BasicHeader heading='Check Out' subHeading='Home' />
             <div className='max-w-[1320px] mx-auto px-8 md:px-0'>
                 <div className='flex flex-col md:flex-row space-x-0 md:space-x-[90px] lg:space-x-[136px] mt-4'>
                     <div className='w-full md:w-2/3'>
-                        <p className='shop-heading font-montserrat'>shopping cart</p>
+                        <p className='shop-heading font-montserrat'>Check Out</p>
                         <div className='mt-16 w-full'>
-                            <Form form={form} onFinish={onFinish} className="w-full">
-                                <div className="space-y-2 w-full">
-                                    <div className='w-full grid grid-cols-1 md:grid-cols-2 items-center space-x-6'>
+                            <Form form={form}>
+                                <div className="w-full">
+                                    <div className='w-full grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
                                         <FormInput
                                             label='First Name'
                                             name="FName"
                                             type="text"
-                                            placeholder="Enter Your FIrst Name"
+                                            placeholder="First Name"
                                             rules={[{ required: true, message: "Please provide First Name" }]}
                                             className="border w-full p-[18px] rounded"
                                         />
@@ -35,46 +58,66 @@ const page: React.FC = () => {
                                             label='Last Name'
                                             name="LName"
                                             type="text"
-                                            placeholder="Enter Your FIrst Name"
+                                            placeholder="Last Name"
                                             rules={[{ required: true, message: "Please provide your Last Name" }]}
                                             className="border w-full p-[18px] rounded"
                                         />
                                     </div>
                                     <FormInput
-                                        name="age"
-                                        type="number"
-                                        placeholder="Age"
-                                        rules={[{ required: true, message: "Please provide your Age" }]}
+                                        label='Email'
+                                        name="email"
+                                        type="email"
+                                        placeholder="Email Address"
+                                        rules={[{ required: true, message: "Please provide your Email" }]}
                                         className="border w-full p-[18px] rounded"
                                     />
                                     <FormInput
-                                        name="age"
+                                        label='Phone Number'
+                                        name="phone"
                                         type="number"
-                                        placeholder="Age"
-                                        rules={[{ required: true, message: "Please provide your Age" }]}
+                                        placeholder="Phone Number"
+                                        rules={[{ required: true, message: "Please provide your Phone Number" }]}
                                         className="border w-full p-[18px] rounded"
                                     />
-
+                                    <FormInput
+                                        label='Location'
+                                        name="location"
+                                        type="text"
+                                        placeholder="Location"
+                                        rules={[{ required: true, message: "Please provide your Location" }]}
+                                        className="border w-full p-[18px] rounded"
+                                    />
+                                    <div className='w-full grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
+                                        <FormInput
+                                            label='Town/City'
+                                            name="city"
+                                            type="text"
+                                            placeholder="Town/City"
+                                            rules={[{ required: true, message: "Please provide Town/City" }]}
+                                            className="border w-full p-[18px] rounded"
+                                        />
+                                        <FormInput
+                                            label='Postal Code'
+                                            name="PCode"
+                                            type="number"
+                                            placeholder="Postal Code"
+                                            rules={[{ required: true, message: "Please provide your Postal Code" }]}
+                                            className="border w-full p-[18px] rounded"
+                                        />
+                                    </div>
                                 </div>
-                                <Button type="submit" className="button mt-7 hover:text-white">
-                                    Calculate
-                                </Button>
                             </Form>
                         </div>
                         <p className='my-10 text-1 font-semibold text-[24px]'>Payment Method</p>
                         <div className='border rounded'>
-                            <div className='p-5 border border-b flex text-[16px] font-medium space-x-2'>
-                                <input className='text-3xl' type="radio" name="paymentMethod" id="creditCart" />
-                                <label htmlFor="creditCart">Credit Card</label>
-                            </div>
-                            <div className='p-5 flex text-[16px] font-medium space-x-2'>
-                                <input className='text-3xl text-primary bg-primary' type="radio" name="paymentMethod" id="payPal" />
-                                <label htmlFor="payPal">Paypal</label>
-                            </div>
+                            <Radio.Group className='grid grid-cols-1 text-[16px] font-poppins' onChange={onChange} value={value}>
+                                <Radio className='p-4 border-[#D9D9D9] border-b w-full' value={1}>Credit Card</Radio>
+                                <Radio className='p-4 w-full' value={2}>PayPal</Radio>
+                            </Radio.Group>
                         </div>
                     </div>
-                    <div className='w-full md:w-1/3 '>
-                        <div className=''>
+                    <div className='w-full md:w-1/3'>
+                        <div>
                             <p className='text-1 font-bold text-[28px]'>Order Summary</p>
                             <div className='mt-16'>
                                 {
@@ -93,17 +136,18 @@ const page: React.FC = () => {
                                     <p>$10.00</p>
                                 </div>
                                 <div className='flex justify-between py-[18px]'>
-                                    <p className='font-semibold text1'>Total</p>
+                                    <p className='font-semibold text-1'>Total</p>
                                     <p>$171.78</p>
                                 </div>
-                                <p className='mt-4'>shopping cost calculate at checkout *</p>
+                                <p className='mt-4'>Shopping cost calculated at checkout *</p>
                             </div>
                             <p className='mt-6 text-justify font-normal text-secondary text-[16px]'>
-                                Your personal data helps us efficiently process and f
-                                ulfill your order, ensuring a smooth and personalized shopping experience.
+                                Your personal data helps us efficiently process and fulfill your order, ensuring a smooth and personalized shopping experience.
                             </p>
                         </div>
-                        <Link href=''> <button className='process-button'>Place Order</button></Link>
+                        <Link href='' onClick={(e) => { e.preventDefault(); handlePlaceOrder(); }}>
+                            <button className='process-button'>Place Order</button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -111,4 +155,4 @@ const page: React.FC = () => {
     );
 };
 
-export default page;
+export default Page;

@@ -12,7 +12,6 @@ interface ImageCardsProps {
 
 }
 
-
 export const ImageCards  = ({name, label, max = 5, required}: ImageCardsProps) => {
     const Input = ({value, onChange}: any) => {
 
