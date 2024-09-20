@@ -7,7 +7,7 @@ const Review: React.FC = () => {
     const [like, setLike] = useState(4)
     const [dislike, setDisLike] = useState(1)
     return (
-        <div className='flex flex-col md:flex-row gap-8 mt-10 border border-[#D9D9D9] rounded p-10'>
+        <div className='font-poppins flex flex-col md:flex-row gap-8 mt-10 border border-[#D9D9D9] rounded p-10'>
             <div className=''>
                 <Image className='rounded-full mx-auto ' src='/person.png' alt='person' width={200} height={200} />
             </div>
@@ -33,5 +33,4 @@ const Review: React.FC = () => {
         </div>
     );
 };
-
 export default Review;
