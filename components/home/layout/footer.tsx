@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
                             className="border-[#D9D9D9] py-5 border-b-2 w-full text-gray-900 focus:outline-none"
                         />
                         <div className='mx-auto text-center mt-6 '>
-                            <button className="mx-auto rounded bg-[#E67529] text-[18px]  duration-300  hover:scale-105 font-medium text-white px-8 py-4">
+                            <button className="mx-auto rounded bg-[#E67529] text-[18px] duration-300 hover:scale-105 font-medium text-white px-8 py-4">
                                 Subscribe
                             </button>
                         </div>
