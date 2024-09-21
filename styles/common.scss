@@ -129,7 +129,6 @@
   background-color: #E67529;
   transform: scale(1.05);
   color: white;
-  border: none;
 }
 
 .share-button {
@@ -253,4 +252,20 @@
   line-height: normal;
   text-transform: capitalize;
   text-align: center;
+}
+
+.auth-button {
+  border-radius: 4px;
+  margin-top: 34px;
+  border: 0.5px solid #E67529;
+  width: 100%;
+  background-color: #FF4E251A;
+  transition: transform 0.3s ;
+}
+
+.auth-button:hover {
+  width: 100%;
+  transform: scale(1.05);
+  background-color: #E67529;
+  color: #FFFFFF;
 }
