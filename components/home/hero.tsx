@@ -4,7 +4,7 @@ import Button from '../common/button';
 
 const Hero: React.FC = () => {
     return (
-        <div className="relative" >
+        <div className="relative -top-[125px]" >
             <Image src={'/banner.png'} width={500} height={500} alt='banner' className='absolute w-full h-full ' />
             <div className='relative bg-[#001223]/90 w-full lg:h-[100vh] md:h-[68.7vh] overflow-hidden'>
                 <Image src={'/banner-vector.png'} width={500} height={500} alt='banner' className='absolute md:top-[78px] lg:top-[125px] w-[55%] h-[55vh] right-0 lg:h-[80vh] md:block hidden ' />
