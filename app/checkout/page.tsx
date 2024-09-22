@@ -3,36 +3,24 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import BasicHeader from '../../components/common/basic-header';
 import CheckOutCard from '../../components/card/CheckOutCard';
-import { Form, RadioChangeEvent, Radio } from 'antd';
+import { Form, Radio } from 'antd';
 import FormInput from '../../components/form/input';
 
-const products = [
-    { image: '/whey.png', name: 'impact whey protein', price: 80.89, size: 1, quantity: 3 },
-    { image: '/whey.png', name: 'impact whey protein', price: 80.89, size: 1, quantity: 3 }
-];
+const products = Array(2).fill({ image: '/whey.png', name: 'impact whey protein', price: 80.89, size: 1, quantity: 3 });
 
 const Page: React.FC = () => {
-    const [value, setValue] = useState(1);
+    const [value, setValue] = useState('Credit Card');
     const [form] = Form.useForm();
-    
-    const onFinish = (values: { FName: string; LName: string; email: string; phone: number; location: string; city: string; PCode: string }) => {
+
+    const onFinish = (values: any) => {
         console.log(values, value);
         form.resetFields();
     };
 
-    const onChange = (e: RadioChangeEvent) => {
-        console.log('radio checked', e.target.value);
-        setValue(e.target.value);
-    };
-
     const handlePlaceOrder = () => {
         form.validateFields()
-            .then(values => {
-                onFinish(values);
-            })
-            .catch(info => {
-                console.log('Validate Failed:', info);
-            });
+            .then(onFinish)
+            .catch(info => console.log('Validate Failed:', info));
     };
 
     return (
@@ -42,103 +30,64 @@ const Page: React.FC = () => {
                 <div className='flex flex-col md:flex-row space-x-0 md:space-x-[90px] lg:space-x-[136px] mt-4'>
                     <div className='w-full md:w-2/3'>
                         <p className='shop-heading font-montserrat'>Check Out</p>
-                        <div className='mt-16 w-full'>
-                            <Form form={form}>
-                                <div className="w-full">
-                                    <div className='w-full grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
-                                        <FormInput
-                                            label='First Name'
-                                            name="FName"
-                                            type="text"
-                                            placeholder="First Name"
-                                            rules={[{ required: true, message: "Please provide First Name" }]}
-                                            className="border w-full p-[18px] rounded"
-                                        />
-                                        <FormInput
-                                            label='Last Name'
-                                            name="LName"
-                                            type="text"
-                                            placeholder="Last Name"
-                                            rules={[{ required: true, message: "Please provide your Last Name" }]}
-                                            className="border w-full p-[18px] rounded"
-                                        />
-                                    </div>
+                        <Form form={form} className='mt-16 w-full'>
+                            <div className='grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
+                                {['FName', 'LName'].map((name, idx) => (
                                     <FormInput
-                                        label='Email'
-                                        name="email"
-                                        type="email"
-                                        placeholder="Email Address"
-                                        rules={[{ required: true, message: "Please provide your Email" }]}
-                                        className="border w-full p-[18px] rounded"
-                                    />
-                                    <FormInput
-                                        label='Phone Number'
-                                        name="phone"
-                                        type="number"
-                                        placeholder="Phone Number"
-                                        rules={[{ required: true, message: "Please provide your Phone Number" }]}
-                                        className="border w-full p-[18px] rounded"
-                                    />
-                                    <FormInput
-                                        label='Location'
-                                        name="location"
+                                        key={name}
+                                        label={name === 'FName' ? 'First Name' : 'Last Name'}
+                                        name={name}
                                         type="text"
-                                        placeholder="Location"
-                                        rules={[{ required: true, message: "Please provide your Location" }]}
+                                        placeholder={name === 'FName' ? 'First Name' : 'Last Name'}
+                                        rules={[{ required: true, message: `Please provide your ${name === 'FName' ? 'First' : 'Last'} Name` }]}
                                         className="border w-full p-[18px] rounded"
                                     />
-                                    <div className='w-full grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
-                                        <FormInput
-                                            label='Town/City'
-                                            name="city"
-                                            type="text"
-                                            placeholder="Town/City"
-                                            rules={[{ required: true, message: "Please provide Town/City" }]}
-                                            className="border w-full p-[18px] rounded"
-                                        />
-                                        <FormInput
-                                            label='Postal Code'
-                                            name="PCode"
-                                            type="number"
-                                            placeholder="Postal Code"
-                                            rules={[{ required: true, message: "Please provide your Postal Code" }]}
-                                            className="border w-full p-[18px] rounded"
-                                        />
-                                    </div>
-                                </div>
-                            </Form>
-                        </div>
+                                ))}
+                            </div>
+                            {['email', 'phone', 'location'].map((name) => (
+                                <FormInput
+                                    key={name}
+                                    label={name.charAt(0).toUpperCase() + name.slice(1).replace('PCode', 'Postal Code')}
+                                    name={name}
+                                    type={name === 'email' ? 'email' : 'phone'? 'number' : 'text'}
+                                    placeholder={name.charAt(0).toUpperCase() + name.slice(1)}
+                                    rules={[{ required: true, message: `Please provide your ${name.charAt(0).toUpperCase() + name.slice(1)}` }]}
+                                    className="border w-full p-[18px] rounded"
+                                />
+                            ))}
+                            <div className='grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
+                                {['city', 'PCode'].map((name) => (
+                                    <FormInput
+                                        key={name}
+                                        label={name === 'city' ? 'Town/City' : 'Postal Code'}
+                                        name={name}
+                                        type={name === 'city' ? 'text' : 'number'}
+                                        placeholder={name === 'city' ? 'Town/City' : 'Postal Code'}
+                                        rules={[{ required: true, message: `Please provide your ${name === 'city' ? 'Town/City' : 'Postal Code'}` }]}
+                                        className="border w-full p-[18px] rounded"
+                                    />
+                                ))}
+                            </div>
+                        </Form>
                         <p className='my-10 text-1 font-semibold text-[24px]'>Payment Method</p>
-                        <div className='border rounded'>
-                            <Radio.Group className='grid grid-cols-1 text-[16px] font-poppins' onChange={onChange} value={value}>
-                                <Radio className='p-4 border-[#D9D9D9] border-b w-full' value={1}>Credit Card</Radio>
-                                <Radio className='p-4 w-full' value={2}>PayPal</Radio>
-                            </Radio.Group>
-                        </div>
+                        <Radio.Group className='grid grid-cols-1 text-[16px] font-poppins border' onChange={e => setValue(e.target.value)} value={value}>
+                            {['Credit Card', 'PayPal'].map((method, idx) => (
+                                <Radio key={idx} className='p-4 border-[#D9D9D9] border-b w-full' value={method}>{method}</Radio>
+                            ))}
+                        </Radio.Group>
                     </div>
                     <div className='w-full md:w-1/3'>
                         <div>
                             <p className='text-1 font-bold text-[28px]'>Order Summary</p>
                             <div className='mt-16'>
-                                {
-                                    products.map((product, index) => (
-                                        <CheckOutCard key={index} image={product.image} name={product.name} price={product.price} quantity={product.quantity} />
-                                    ))
-                                }
+                                {products.map((product, index) => (
+                                    <CheckOutCard key={index} {...product} />
+                                ))}
                             </div>
                             <div className='p-6 mt-[45px] rounded text-[18px] font-light text-[#534C4C] border border-[#D9D9D9]'>
-                                <div className='flex justify-between pb-[18px]'>
-                                    <p>SubTotal</p>
-                                    <p>$161.78</p>
-                                </div>
-                                <div className='flex justify-between py-[18px]'>
-                                    <p>Tax</p>
-                                    <p>$10.00</p>
-                                </div>
-                                <div className='flex justify-between py-[18px]'>
-                                    <p className='font-semibold text-1'>Total</p>
-                                    <p>$171.78</p>
-                                </div>
+                                <div className='flex justify-between pb-[18px]'><p>SubTotal</p><p>$161.78</p></div>
+                                <div className='flex justify-between py-[18px]'><p>Tax</p><p>$10.00</p></div>
+                                <div className='flex justify-between py-[18px]'><p className='font-semibold text-1'>Total</p><p>$171.78</p></div>
                                 <p className='mt-4'>Shopping cost calculated at checkout *</p>
                             </div>
                             <p className='mt-6 text-justify font-normal text-secondary text-[16px]'>

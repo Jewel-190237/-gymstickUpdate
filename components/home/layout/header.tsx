@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Dropdown, Space } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { IoMdCloseCircle } from 'react-icons/io';
+import Link from 'next/link';
 
 const links = [
   { name: 'Home', dropdownItems: [{ name: 'Home 1', href: '/' }, { name: 'Home 2', href: '/home2' }, { name: 'Home 3', href: '/home3' }] },
@@ -24,7 +25,7 @@ const Navbar: React.FC = () => {
     const currentPath = window.location.pathname;
     const activeItem = links.find(link => link.path === currentPath || (link.dropdownItems && link.dropdownItems.some(item => item.href === currentPath)));
     if (activeItem) {
-      setActiveLink(activeItem.name); 
+      setActiveLink(activeItem.name);
     }
   }, [router]);
 
@@ -80,9 +81,11 @@ const Navbar: React.FC = () => {
           {renderLinks()}
         </div>
         <div className="ml-16">
-          <button className="border-2 border-[#E67529] px-4 md:px-8 py-4 rounded-[4px] hover:bg-[#E67529] hover:text-white text-primary transition">
-            Join Us
-          </button>
+          <Link href='/signup'>
+            <button className="border-2 border-[#E67529] px-4 md:px-8 py-4 rounded-[4px] hover:bg-[#E67529] hover:text-white text-primary transition">
+              Join Us
+            </button>
+          </Link>
         </div>
       </div>
       <div className='h-[1px] w-full relative bottom-[11px] bg-[#D9D9D933]'></div>
