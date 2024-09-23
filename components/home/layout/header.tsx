@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
           {renderLinks()}
         </div>
         <div className="ml-16">
-          <Link href='/signup'>
+          <Link href='/login'>
             <button className="border-2 border-[#E67529] px-4 md:px-8 py-4 rounded-[4px] hover:bg-[#E67529] hover:text-white text-primary transition">
               Join Us
             </button>

@@ -22,6 +22,7 @@ const Page: React.FC = () => {
             .then(onFinish)
             .catch(info => console.log('Validate Failed:', info));
     };
+    const paymentMethod = ['Credit Card', 'PayPal']
 
     return (
         <section>
@@ -32,48 +33,72 @@ const Page: React.FC = () => {
                         <p className='shop-heading font-montserrat'>Check Out</p>
                         <Form form={form} className='mt-16 w-full'>
                             <div className='grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
-                                {['FName', 'LName'].map((name, idx) => (
-                                    <FormInput
-                                        key={name}
-                                        label={name === 'FName' ? 'First Name' : 'Last Name'}
-                                        name={name}
-                                        type="text"
-                                        placeholder={name === 'FName' ? 'First Name' : 'Last Name'}
-                                        rules={[{ required: true, message: `Please provide your ${name === 'FName' ? 'First' : 'Last'} Name` }]}
-                                        className="border w-full p-[18px] rounded"
-                                    />
-                                ))}
-                            </div>
-                            {['email', 'phone', 'location'].map((name) => (
                                 <FormInput
-                                    key={name}
-                                    label={name.charAt(0).toUpperCase() + name.slice(1).replace('PCode', 'Postal Code')}
-                                    name={name}
-                                    type={name === 'email' ? 'email' : 'phone'? 'number' : 'text'}
-                                    placeholder={name.charAt(0).toUpperCase() + name.slice(1)}
-                                    rules={[{ required: true, message: `Please provide your ${name.charAt(0).toUpperCase() + name.slice(1)}` }]}
+                                    label='First Name'
+                                    name='FName'
+                                    type="text"
+                                    placeholder='First Name'
+                                    rules={[{ required: true, message: `Please provide your First Name` }]}
                                     className="border w-full p-[18px] rounded"
                                 />
-                            ))}
+                                <FormInput
+                                    label='Last Name'
+                                    name='LName'
+                                    type="text"
+                                    placeholder='Last Name'
+                                    rules={[{ required: true, message: `Please provide your Last Name` }]}
+                                    className="border w-full p-[18px] rounded"
+                                />
+
+                            </div>
+                            <FormInput
+                                label='Email'
+                                name='email'
+                                type="email"
+                                placeholder='Email'
+                                rules={[{ required: true, message: `Please provide your Email` }]}
+                                className="border w-full p-[18px] rounded"
+                            />
+                            <FormInput
+                                label='Phone Number'
+                                name='phone'
+                                type="number"
+                                placeholder='Phone Number'
+                                rules={[{ required: true, message: `Please provide your Phone Number` }]}
+                                className="border w-full p-[18px] rounded"
+                            />
+                            <FormInput
+                                label='Location'
+                                name='location'
+                                type="text"
+                                placeholder='Location'
+                                rules={[{ required: true, message: `Please provide your Location` }]}
+                                className="border w-full p-[18px] rounded"
+                            />
+
                             <div className='grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
-                                {['city', 'PCode'].map((name) => (
-                                    <FormInput
-                                        key={name}
-                                        label={name === 'city' ? 'Town/City' : 'Postal Code'}
-                                        name={name}
-                                        type={name === 'city' ? 'text' : 'number'}
-                                        placeholder={name === 'city' ? 'Town/City' : 'Postal Code'}
-                                        rules={[{ required: true, message: `Please provide your ${name === 'city' ? 'Town/City' : 'Postal Code'}` }]}
-                                        className="border w-full p-[18px] rounded"
-                                    />
-                                ))}
+                                <FormInput
+                                    label='Town/City'
+                                    name='city'
+                                    type="text"
+                                    placeholder='Town/City'
+                                    rules={[{ required: true, message: `Please provide your Town/City` }]}
+                                    className="border w-full p-[18px] rounded"
+                                />
+                                <FormInput
+                                    label='Postal Code'
+                                    name='PCode'
+                                    type="number"
+                                    placeholder='Postal Code'
+                                    rules={[{ required: true, message: `Please provide your Postal Code` }]}
+                                    className="border w-full p-[18px] rounded"
+                                />
                             </div>
                         </Form>
                         <p className='my-10 text-1 font-semibold text-[24px]'>Payment Method</p>
                         <Radio.Group className='grid grid-cols-1 text-[16px] font-poppins border' onChange={e => setValue(e.target.value)} value={value}>
-                            {['Credit Card', 'PayPal'].map((method, idx) => (
-                                <Radio key={idx} className='p-4 border-[#D9D9D9] border-b w-full' value={method}>{method}</Radio>
-                            ))}
+                            <Radio className={`p-4 border-[#D9D9D9] border-b w-full`} value='Credit Card'>Credit Card</Radio>
+                            <Radio className={`p-4 border-[#D9D9D9] w-full`} value='Pay Pall'>Pay Pall</Radio>
                         </Radio.Group>
                     </div>
                     <div className='w-full md:w-1/3'>

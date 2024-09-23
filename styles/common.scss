@@ -12,6 +12,7 @@
 .largeHeading {
   @apply xl:text-[64px] lg:text-[40px] md:text-[32px] text-2xl xl:leading-[83.2px] leading-[50px] font-bold;
 }
+
 .auth-heading {
   @apply text-[#2B2B2B] text-2xl md:text-[32px] font-bold leading-normal text-center capitalize;
 }
@@ -221,6 +222,7 @@
   border-color: #E67529 !important;
 }
 
+
 // .ant-radio-wrapper:hover .ant-radio-inner {
 //   border-color: red !important;
 // }
@@ -253,7 +255,7 @@
   border: 0.5px solid #E67529;
   width: 100%;
   background-color: #FF4E2508;
-  transition: transform 0.3s ;
+  transition: transform 0.3s;
 }
 
 .auth-button:hover {
@@ -262,17 +264,46 @@
   background-color: #E67529;
   color: #FFFFFF;
 }
+
 // otp input remove bg and border
 .ant-input-number {
   background-color: #FF4E2508 !important;
-  color: inherit; 
+  color: inherit;
 }
 
 .ant-input-number {
   border-color: #E67529 !important;
 }
 
+.shop-button {
+  color: #E67529;
+  background-color: white;
+  border: 1px solid #E67529;
+  border-radius: 4px;
+  padding: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
 
+.hop-button:hover {
+  background-color: #E67529;
+  color: white;
+}
 
+// alert button used in shop card 
+.alertButton {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 16px 32px;
+  color: #2B2B2B;
+  border-radius: 4px;
+  font-size: 16px;
+  border: 0.5px solid #E67529;
+  transition: transform 0.3s;
 
+}
 
+.alertButton:hover {
+  transform: scale(1.05);
+  background-color: #E67529;
+  color: white;
+}
