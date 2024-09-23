@@ -281,18 +281,15 @@
   border: 1px solid #E67529;
   border-radius: 4px;
   padding: 4px;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.hop-button:hover {
+.shop-button:hover {
   background-color: #E67529;
   color: white;
 }
 
 // alert button used in shop card 
 .alertButton {
-  margin-top: 8px;
-  margin-bottom: 8px;
   padding: 16px 32px;
   color: #2B2B2B;
   border-radius: 4px;
@@ -306,4 +303,27 @@
   transform: scale(1.05);
   background-color: #E67529;
   color: white;
+}
+
+// sweetalert properties
+
+.swal-content {
+  text-align: center;
+  margin: 20px;
+}
+
+.swal-title {
+  font-size: 25px;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+.swal-link {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.swal-popup {
+  width: 600px;
+  /* Adjust as needed */
 }

@@ -16,20 +16,22 @@ const ShopCard: React.FC<ShopCardProps> = ({ data }) => {
         Swal.fire({
             title: "Great!",
             html: `
-            <div>
-                <p style="font-size: 25px; white-space: nowrap;">
-                    <span style="font-weight: bold; text-transform: capitalize;">${data?.name}</span> added successfully
-                </p>
-                <div style="margin-top: 40px; margin-bottom: 10px;">
-                    <a href="/cart" class="alertButton"> View Cart </a>
+                <div class="swal-content">
+                    <p class="swal-title">
+                        <strong>${data?.name}</strong> added successfully
+                    </p>
+                    <div class="swal-link">
+                        <a href="/cart" class="alertButton">View Cart</a>
+                    </div>
                 </div>
-            </div>`,
-        icon: "success",
-        showCancelButton: false,
-        confirmButtonText: 'Close',
-        confirmButtonColor: '#E67529',
+            `,
+            icon: "success",
+            showCancelButton: false,
+            confirmButtonText: 'Close',
+            confirmButtonColor: '#E67529',
+            customClass: { popup: 'swal-popup' }
         });
-    }
+    };
 
     return (
         <div className="rounded hover:scale-105 transition-all duration-150 w-full mx-auto border overflow-hidden">
@@ -64,3 +66,5 @@ const ShopCard: React.FC<ShopCardProps> = ({ data }) => {
 };
 
 export default ShopCard;
+
+
