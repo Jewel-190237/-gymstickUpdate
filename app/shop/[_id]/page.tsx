@@ -173,9 +173,11 @@ const Wheyprotein: React.FC = () => {
                     <div className='mt-[70px] md:mt-[140px]'>
                         <p className='text-[28px] font-semibold'>Related Products</p>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6'>
-                            {paginatedProducts.map((product, index) => (
-                                <ShopCard key={index} data={product} />
-                            ))}
+                            {paginatedProducts.map(product => (
+                            <Link key={product._id} href={`/shop/_${product._id}`} passHref>
+                                <ShopCard data={product} />
+                            </Link>
+                        ))}
                         </div>
                         <Pagination align='center' current={currentPage} pageSize={pageSize} total={totalProduct} onChange={(page) => setCurrentPage(page)} className='!mt-12' />
                     </div>

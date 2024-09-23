@@ -20,7 +20,6 @@ const Page: React.FC = () => {
             }
         }
     };
-
     return (
         <div>
             <BasicHeader heading='OTP' subHeading='Home' />
@@ -54,5 +53,4 @@ const Page: React.FC = () => {
         </div>
     );
 };
-
 export default Page;

@@ -274,17 +274,17 @@ const Shop: React.FC = () => {
                         />
                     </div>
                     <div className='flex-none w-[240px] items-center border md:border-t-0 md:border-b-0 border-l md:border-r-0 hidden md:flex'>
-                        <Dropdown menu={{ items, onClick: ({ key }) => { setSelectedCategory(key === 'All' ? 'Select Category' : key); setCurrentPage(1); }}} trigger={['hover']}>
+                        <Dropdown menu={{ items, onClick: ({ key }) => { setSelectedCategory(key === 'All' ? 'Select Category' : key); setCurrentPage(1); } }} trigger={['hover']}>
                             <Space className='ml-10 text-[16px] space-x-4 cursor-pointer'>
                                 <span className="capitalize">{selectedCategory}</span>
-                                <DownOutlined />
+                                <DownOutlined className='text-xs' />
                             </Space>
                         </Dropdown>
                     </div>
                     <div className='px-10 flex justify-between text-4xl md:hidden items-center py-4 bg-primary'>
                         <RiMenu2Fill className='text-white' />
                         <SearchOutlined onClick={() => setSearchVisible(!searchVisible)} className='text-white cursor-pointer' />
-                        <Dropdown menu={{ items, onClick: ({ key }) => { setSelectedCategory(key === 'All' ? 'Select Category' : key); setCurrentPage(1); }}} trigger={['hover']}>
+                        <Dropdown menu={{ items, onClick: ({ key }) => { setSelectedCategory(key === 'All' ? 'Select Category' : key); setCurrentPage(1); } }} trigger={['hover']}>
                             <DownOutlined className='text-white text-3xl cursor-pointer' />
                         </Dropdown>
                     </div>
@@ -303,9 +303,7 @@ const Shop: React.FC = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14'>
                     {paginatedProducts.length ? (
                         paginatedProducts.map(product => (
-                            <Link key={product._id} href={`/shop/_${product._id}`} passHref>
-                                <ShopCard data={product} />
-                            </Link>
+                            <ShopCard key={product._id} data={product} />
                         ))
                     ) : (
                         <div className='col-span-full text-center'>No products found</div>
