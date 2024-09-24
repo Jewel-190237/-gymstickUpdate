@@ -185,7 +185,9 @@
 .ant-row {
   display: block;
 }
-
+.ant-form-item {
+  margin-bottom: 0;
+}
 .ant-form-item .ant-form-item-label {
   text-align: left;
   padding-bottom: 8px;
@@ -198,6 +200,9 @@
   font-size: 14px;
   line-height: 1;
   content: "*";
+}
+.ant-form-item .ant-form-item-label >label::after{
+  content: '';
 }
 
 .ant-form-item .ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
@@ -309,4 +314,41 @@
   width: 600px;
 }
 
+.login-heading {
+  color: #2B2B2B;
+  font-family: Montserrat;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.text-element {
+  font-size: 130px;
+  color: #E67529;
+  text-shadow:
+    -2px -2px 0 white,
+    2px -2px 0 white,
+    -2px 2px 0 white,
+    2px 2px 0 white;
+  font-weight: 1000;
+  display: inline-block;
+}
+// login input form style
+.custom-input::placeholder {
+  color: white;
+  opacity: 1; 
+}
+.custom-input {
+  border: 0.5px solid white; 
+  outline: none; 
+  transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+  border-color: white; 
+  box-shadow: none; 
+}
 
