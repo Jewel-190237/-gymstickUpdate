@@ -17,6 +17,7 @@ interface FormInputProps {
     className?: string
 }
 
+
 const FormInput = ({label, name, className, required, isEmail, initialValue, placeholder, rules = [], inputProps, textArea, type, onKeyPress, readOnly, onChange}: FormInputProps) => {
     let initRules: any = [
         {
