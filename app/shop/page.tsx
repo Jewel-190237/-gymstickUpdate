@@ -4,7 +4,6 @@ import { RiMenu2Fill } from "react-icons/ri";
 import { SearchOutlined, DownOutlined } from '@ant-design/icons';
 import { Input, Dropdown, Space, Pagination } from 'antd';
 import type { MenuProps } from 'antd';
-import Link from 'next/link';
 import BasicHeader from '../../components/common/basic-header';
 import ShopCard from '../../components/home/shop-card';
 
@@ -234,6 +233,7 @@ const products = [
         image: "/whey.png",
         category: "shoes",
     },
+    
 ];
 
 const Shop: React.FC = () => {

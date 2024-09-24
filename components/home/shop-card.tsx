@@ -12,7 +12,7 @@ interface ShopCardProps {
 }
 
 const ShopCard: React.FC<ShopCardProps> = ({ data }) => {
-    const handleClick = () => {
+    const handleClick = (value) => {
         Swal.fire({
             title: "Great!",
             html: `
@@ -21,7 +21,7 @@ const ShopCard: React.FC<ShopCardProps> = ({ data }) => {
                         <strong>${data?.name}</strong> added successfully
                     </p>
                     <div class="swal-link">
-                        <a href="/cart" class="alertButton">View Cart</a>
+                        <a href="${value === 'cart' ? '/cart' : '/wishlist'}" class="alertButton">View ${value === 'cart' ? 'Cart' : 'Wish List'}</a>
                     </div>
                 </div>
             `,
@@ -46,14 +46,12 @@ const ShopCard: React.FC<ShopCardProps> = ({ data }) => {
                 <Rate className='text-primary' disabled defaultValue={data?.rate} />
                 <h6 className="text-[16px] font-semibold">${data?.price}</h6>
                 <div className="flex gap-[14px] justify-center">
-                    <button onClick={handleClick} className="shop-button">
+                    <button onClick={() => handleClick('cart')} className="shop-button">
                         <TbShoppingBag size={24} />
                     </button>
-                    <Link href={`/wishlist`}>
-                        <button className="shop-button">
-                            <PiHeartLight size={24} />
-                        </button>
-                    </Link>
+                    <button onClick={() => handleClick('wishlist')} className="shop-button">
+                        <PiHeartLight size={24} />
+                    </button>
                     <Link href={`/shop/_${data?._id}`}>
                         <button className="shop-button">
                             <CgEye size={24} />
