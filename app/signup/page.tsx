@@ -29,7 +29,7 @@ const Page: React.FC = () => {
                 <div className='mt-[116px] flex items-center flex-col md:flex-row space-x-0 md:space-x-14 lg:space-x-20 bg-primary rounded'>
                     <div className='flex-1 relative'>
                         <p className='p-0 md:p-6 mt-10 md:mt-0 text-element !text-5xl lg:!text-[130px] md:!text-6xl font-montserrat !text-center'>Gymstick</p>
-                        <Image className='hidden md:flex absolute md:left-9 lg:left-40 -top-[290px]' src='/login.png' alt='Login Image ' width={350} height={780}/>
+                        <Image className='hidden md:flex absolute md:left-9 lg:left-40 -top-[240px]' src='/signup.png' alt='Login Image ' width={400} height={780}/>
                     </div>
                     <div className='flex-1 pr-0 md:pr-16 lg:pr-[112px] py-10'>
                         <div className='text-white'>
@@ -87,7 +87,7 @@ const Page: React.FC = () => {
                                     
                                     <button type='submit' className='auth-button !text-primary !bg-white font-poppins py-4 !mt-12'>Log In</button>
                                 </Form>
-                                <p className='mt-4 !text-white description !text-left'>Already have an account <Link className='text-white underline' href='/login'>Log In</Link></p>
+                                <p className='mt-4 !text-white description !text-left'>Already have an account ?<Link className='text-white underline' href='/login'> Log In</Link></p>
                             </div>
                         </div>
                     </div>
