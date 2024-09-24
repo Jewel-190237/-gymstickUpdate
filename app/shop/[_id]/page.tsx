@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Rate, Pagination, Modal } from 'antd';
+import { Rate, Pagination,  } from 'antd';
 import { BsCartPlus, BsHandbag } from "react-icons/bs";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { TbBrandYoutube } from "react-icons/tb";
@@ -10,6 +10,7 @@ import { FaXTwitter } from 'react-icons/fa6';
 import BasicHeader from '../../../components/common/basic-header';
 import ShopCard from '../../../components/home/shop-card';
 import Review from '../../../components/card/Review';
+import Swal from 'sweetalert2';
 const products = [
     {
         _id: "64f0cabe65f1b2b6c5e432a2",
@@ -89,7 +90,6 @@ const Wheyprotein: React.FC = () => {
     const [weight, setWeight] = useState('1.5');
     const [activeButton, setActiveButton] = useState('1.5');
     const [currentPage, setCurrentPage] = useState(1);
-    const [isModalVisible, setIsModalVisible] = useState(false);
     const pageSize = 4;
     const totalProduct = products.length;
     const paginatedProducts = products.slice((currentPage - 1) * pageSize, currentPage * pageSize);
@@ -100,6 +100,26 @@ const Wheyprotein: React.FC = () => {
         setWeight(newWeight);
         setActiveButton(newWeight);
     };
+    const handleSweetAlert = () => {
+        Swal.fire({
+            title: "Great!",
+            html: `
+                <div class="swal-content">
+                    <p class="swal-title">
+                        <strong>${products[0].name}</strong> added successfully
+                    </p>
+                    <div class="swal-link">
+                        <a href="/cart" class="alertButton">View Cart</a>
+                    </div>
+                </div>
+            `,
+            icon: "success",
+            showCancelButton: false,
+            confirmButtonText: 'Close',
+            confirmButtonColor: '#E67529',
+            customClass: { popup: 'swal-popup' }
+        });
+    }
     return (
         <section className=''>
             <BasicHeader heading={products[0].name} subHeading='Home' />
@@ -134,9 +154,7 @@ const Wheyprotein: React.FC = () => {
                         </div>
                         <div className='mt-10 flex flex-col lg:flex-row items-center lg:space-x-6'>
                             <Link className='w-full' href='/checkout'><button className='w-full product-button  py-4 flex justify-center items-center space-x-[10px]'> <span>Buy Now</span> <BsHandbag size={20} /></button></Link>
-                            <button className='w-full mt-6 lg:mt-0 product-button py-4 flex items-center justify-center space-x-[10px]' onClick={() => setIsModalVisible(true)}>
-                                <span>Add to Cart</span> <BsCartPlus size={20} />
-                            </button>
+                            <button onClick={handleSweetAlert} className='w-full mt-6 lg:mt-0 product-button py-4 flex items-center justify-center space-x-[10px]'> <span>Add to Cart</span> <BsCartPlus size={20} /> </button>
                         </div>
                         <p className='mt-6 text-secondary text-[16px] font-normal capitalize'>
                             Is it sold out? <span className='text-primary underline'>Join the waiting list.</span>
@@ -183,13 +201,6 @@ const Wheyprotein: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <Modal title="Success" visible={isModalVisible} onOk={() => setIsModalVisible(false)} onCancel={() => setIsModalVisible(false)} footer={null}>
-                <div className="flex items-center justify-center flex-col w-full">
-                    <p className="text-primary text-3xl mb-4">✔</p>
-                    <p>Impact Whey Protein has been added to your cart.</p>
-                    <Link href='/cart'><button className='product-button px-8 py-4 mt-3'>View Cart</button></Link>
-                </div>
-            </Modal>
         </section>
     );
 };
