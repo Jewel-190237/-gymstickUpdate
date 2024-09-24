@@ -114,7 +114,7 @@
   border: none;
 }
 
-:where(.css-dev-only-do-not-override-qnu6hi).ant-input-outlined:hover {
+.ant-input-outlined:hover {
   border-color: #534C4C;
   box-shadow: none;
 }
@@ -222,23 +222,6 @@
   border-color: #E67529 !important;
 }
 
-
-// .ant-radio-wrapper:hover .ant-radio-inner {
-//   border-color: red !important;
-// }
-
-// .ant-radio-wrapper:hover .ant-radio-inner::after {
-//   background-color: red !important;
-// }
-
-// .ant-radio-inner {
-//   border-color: red !important; /* Default border color */
-// }
-
-// .ant-radio-wrapper:hover {
-//   color: red !important; /* Change text color on hover */
-// }
-
 .ant-checkbox-checked .ant-checkbox-inner {
   border-color: #E67529;
   background-color: #E67529;
@@ -288,7 +271,7 @@
   color: white;
 }
 
-// alert button used in shop card 
+// alert button in shop card 
 .alertButton {
   padding: 16px 32px;
   color: #2B2B2B;
@@ -306,7 +289,6 @@
 }
 
 // sweetalert properties
-
 .swal-content {
   text-align: center;
   margin: 20px;
@@ -325,5 +307,6 @@
 
 .swal-popup {
   width: 600px;
-  /* Adjust as needed */
 }
+
+

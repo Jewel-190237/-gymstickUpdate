@@ -47,6 +47,7 @@ const Page: React.FC = () => {
                             <div className='mt-3'><Link className='!text-primary description' href='/forgatpassword'>Forgot Password</Link></div>
                             <button type='submit' className='auth-button font-poppins py-4'>Continue</button>
                         </Form>
+                       
                         <p className='mt-[29px] description !text-center'>New Here? <Link className='text-primary' href='/signup'>Please Sign In</Link></p>
                     </div>
                 </div>
