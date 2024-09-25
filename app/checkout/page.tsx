@@ -31,70 +31,72 @@ const Page: React.FC = () => {
                 <div className='flex flex-col md:flex-row space-x-0 md:space-x-[90px] lg:space-x-[136px] mt-4'>
                     <div className='w-full md:w-2/3'>
                         <p className='shop-heading font-montserrat'>Check Out</p>
-                        <Form form={form} className='mt-16 w-full'>
-                            <div className='grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
-                                <FormInput
-                                    label='First Name'
-                                    name='FName'
-                                    type="text"
-                                    placeholder='First Name'
-                                    rules={[{ required: true, message: `Please provide your First Name` }]}
-                                    className="border w-full p-[18px] rounded"
-                                />
-                                <FormInput
-                                    label='Last Name'
-                                    name='LName'
-                                    type="text"
-                                    placeholder='Last Name'
-                                    rules={[{ required: true, message: `Please provide your Last Name` }]}
-                                    className="border w-full p-[18px] rounded"
-                                />
+                        <div className='checkout'>
+                            <Form form={form} className='mt-16 w-full space-y-6'>
+                                <div className='grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
+                                    <FormInput
+                                        label='First Name'
+                                        name='FName'
+                                        type="text"
+                                        placeholder='First Name'
+                                        rules={[{ required: true, message: `Please provide your First Name` }]}
+                                        className=" w-full p-[18px] rounded font-poppins"
+                                    />
+                                    <FormInput
+                                        label='Last Name'
+                                        name='LName'
+                                        type="text"
+                                        placeholder='Last Name'
+                                        rules={[{ required: true, message: `Please provide your Last Name` }]}
+                                        className=" w-full p-[18px] rounded"
+                                    />
 
-                            </div>
-                            <FormInput
-                                label='Email'
-                                name='email'
-                                type="email"
-                                placeholder='Email'
-                                rules={[{ required: true, message: `Please provide your Email` }]}
-                                className="border w-full p-[18px] rounded"
-                            />
-                            <FormInput
-                                label='Phone Number'
-                                name='phone'
-                                type="number"
-                                placeholder='Phone Number'
-                                rules={[{ required: true, message: `Please provide your Phone Number` }]}
-                                className="border w-full p-[18px] rounded"
-                            />
-                            <FormInput
-                                label='Location'
-                                name='location'
-                                type="text"
-                                placeholder='Location'
-                                rules={[{ required: true, message: `Please provide your Location` }]}
-                                className="border w-full p-[18px] rounded"
-                            />
-
-                            <div className='grid grid-cols-1 md:grid-cols-2 items-center md:space-x-6'>
+                                </div>
                                 <FormInput
-                                    label='Town/City'
-                                    name='city'
-                                    type="text"
-                                    placeholder='Town/City'
-                                    rules={[{ required: true, message: `Please provide your Town/City` }]}
-                                    className="border w-full p-[18px] rounded"
+                                    label='Email'
+                                    name='email'
+                                    type="email"
+                                    placeholder='Email'
+                                    rules={[{ required: true, message: `Please provide your Email` }]}
+                                    className=" w-full p-[18px] rounded"
                                 />
                                 <FormInput
-                                    label='Postal Code'
-                                    name='PCode'
+                                    label='Phone Number'
+                                    name='phone'
                                     type="number"
-                                    placeholder='Postal Code'
-                                    rules={[{ required: true, message: `Please provide your Postal Code` }]}
-                                    className="border w-full p-[18px] rounded"
+                                    placeholder='Phone Number'
+                                    rules={[{ required: true, message: `Please provide your Phone Number` }]}
+                                    className=" w-full p-[18px] rounded"
                                 />
-                            </div>
-                        </Form>
+                                <FormInput
+                                    label='Location'
+                                    name='location'
+                                    type="text"
+                                    placeholder='Location'
+                                    rules={[{ required: true, message: `Please provide your Location` }]}
+                                    className=" w-full p-[18px] rounded"
+                                />
+
+                                <div className='grid grid-cols-1 md:grid-cols-2 items-center  md:space-x-6'>
+                                    <FormInput
+                                        label='Town/City'
+                                        name='city'
+                                        type="text"
+                                        placeholder='Town/City'
+                                        rules={[{ required: true, message: `Please provide your Town/City` }]}
+                                        className=" w-full p-[18px] rounded"
+                                    />
+                                    <FormInput
+                                        label='Postal Code'
+                                        name='PCode'
+                                        type="number"
+                                        placeholder='Postal Code'
+                                        rules={[{ required: true, message: `Please provide your Postal Code` }]}
+                                        className=" w-full p-[18px] rounded"
+                                    />
+                                </div>
+                            </Form>
+                        </div>
                         <p className='my-10 text-1 font-semibold text-[24px]'>Payment Method</p>
                         <Radio.Group className='grid grid-cols-1 text-[16px] font-poppins border' onChange={e => setValue(e.target.value)} value={value}>
                             <Radio className={`p-4 border-[#D9D9D9] border-b w-full`} value='Credit Card'>Credit Card</Radio>

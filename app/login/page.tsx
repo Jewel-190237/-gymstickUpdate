@@ -40,37 +40,27 @@ const Page: React.FC = () => {
                                 <button onClick={() => handleClick('trainer')} className={`${active === 'trainer' ? 'underline' : ''}`}>Trainer</button>
                                 <button onClick={() => handleClick('admin')} className={`${active === 'admin' ? 'underline' : ''}`}>Admin</button>
                             </div>
-                            <div className='mt-4 md:mt-10'>
+                            <div className='mt-4 md:mt-10 login-form'>
                                 <Form className='space-y-4' onFinish={onFinish} form={form}>
-                                    <Form.Item
-                                        label={<span className="text-white ">Email:</span>}
+                                    <FormInput
+                                        name='email'
+                                        placeholder='Email'
+                                        type='email'
+                                        label='Email:'
                                         rules={[{ required: true, message: "Please provide your Email" }]}
-                                    >
-                                        <FormInput
-                                            name='email'
-                                            placeholder='Email'
-                                            type='email'
-                                            className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
-                                        />
-                                    </Form.Item>
-                                    <Form.Item
-                                        label={<span className="text-white">Password:</span>}
+                                        className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
+                                    />
+                                    <FormInput
+                                        name='password'
+                                        placeholder='Password'
+                                        type='password'
+                                        label='Password:'
                                         rules={[{ required: true, message: "Please provide your Password" }]}
-                                    >
-                                        <FormInput
-                                            name='password'
-                                            placeholder='Password'
-                                            type='password'
-                                            className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
-                                        />
-                                    </Form.Item>
-                                    <div className='flex flex-col md:flex-row justify-between items-center mt-4'>
-                                        <Checkbox className='description !text-white' onChange={e => setChecked(e.target.checked)}>Remember Me?</Checkbox>
-                                        <div className='description !text-white mt-3 md:mt-0'><Link className='!text-white description underline' href='/forgatpassword'>Forgot Password</Link></div>
-                                    </div>
+                                        className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
+                                    />
                                     <button type='submit' className='auth-button !text-primary !bg-white font-poppins py-4 !mt-12'>Log In</button>
                                 </Form>
-                                <p className='mt-4 !text-white description !text-right'>Don’t have an account? <Link className='text-white underline' href='/signup'>Sign up</Link></p>
+                                <p className='mt-4 !text-white description !text-left'>Already have an account ?<Link className='text-white underline' href='/login'> Log In</Link></p>
                             </div>
                         </div>
                     </div>
