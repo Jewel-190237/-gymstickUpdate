@@ -65,7 +65,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, name, price, size }) =
                     <div className='flex items-center mt-4 lg:mt-0 space-x-2'>
                         <button className='product-button px-6 py-4'>Remove</button>
                         {pathname !== '/cart' && (
-                            <button onClick={handleSweetAlert} className='product-button px-6 py-4 flex items-center justify-center' > <span>Add to Cart</span> <BsCartPlus size={20} /> </button>
+                            <button onClick={handleSweetAlert} className='product-button px-6 py-4 flex items-center justify-center space-x-3' > <span>Add to Cart</span> <BsCartPlus size={20} /> </button>
                         )}
                     </div>
                 </div>

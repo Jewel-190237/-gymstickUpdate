@@ -29,7 +29,7 @@ const Page: React.FC = () => {
                 <div className='mt-[116px] flex items-center flex-col md:flex-row space-x-0 md:space-x-14 lg:space-x-20 bg-primary rounded'>
                     <div className='flex-1 relative'>
                         <p className='p-0 md:p-6 mt-10 md:mt-0 text-element !text-5xl lg:!text-[130px] md:!text-6xl font-montserrat !text-center'>Gymstick</p>
-                        <Image className='hidden md:flex absolute md:left-9 lg:left-40 -top-[240px]' src='/signup.png' alt='Login Image ' width={400} height={780}/>
+                        <Image className='hidden md:flex absolute md:left-9 lg:left-40 -top-[240px]' src='/signup.png' alt='Login Image ' width={400} height={780} />
                     </div>
                     <div className='flex-1 pr-0 md:pr-16 lg:pr-[112px] py-10'>
                         <div className='text-white'>
@@ -38,53 +38,40 @@ const Page: React.FC = () => {
                                 <button onClick={() => handleClick('member')} className={`${active === 'member' ? 'underline' : ''}`}>Member</button>
                                 <button onClick={() => handleClick('trainer')} className={`${active === 'trainer' ? 'underline' : ''}`}>Trainer</button>
                             </div>
-                            <div className='mt-4 md:mt-10'>
+                            <div className='mt-4 md:mt-10 login-form'>
                                 <Form className='space-y-4' onFinish={onFinish} form={form}>
-                                    <Form.Item
-                                        label={<span className="text-white ">Name:</span>}
+                                    <FormInput
+                                        name='name'
+                                        placeholder='Name'
+                                        type='text'
+                                        label='Name:'
                                         rules={[{ required: true, message: "Please provide your Name" }]}
-                                    >
-                                        <FormInput
-                                            name='name'
-                                            placeholder='Name'
-                                            type='text'
-                                            className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
-                                        />
-                                    </Form.Item>
-                                    <Form.Item
-                                        label={<span className="text-white ">Email:</span>}
+                                        className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
+                                    />
+                                    <FormInput
+                                        name='email'
+                                        placeholder='Email'
+                                        type='email'
+                                        label='Email:'
                                         rules={[{ required: true, message: "Please provide your Email" }]}
-                                    >
-                                        <FormInput
-                                            name='email'
-                                            placeholder='Email'
-                                            type='email'
-                                            className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
-                                        />
-                                    </Form.Item>
-                                    <Form.Item
-                                        label={<span className="text-white">Password:</span>}
+                                        className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
+                                    />
+                                    <FormInput
+                                        name='password'
+                                        placeholder='Password'
+                                        type='password'
+                                        label='Password:'
                                         rules={[{ required: true, message: "Please provide your Password" }]}
-                                    >
-                                        <FormInput
-                                            name='password'
-                                            placeholder='Password'
-                                            type='password'
-                                            className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
-                                        />
-                                    </Form.Item>
-                                    <Form.Item
-                                        label={<span className="text-white">Re-Type Password:</span>}
+                                        className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
+                                    />
+                                    <FormInput
+                                        name='re-password'
+                                        placeholder='Te-Type Password'
+                                        type='password'
+                                        label='Te-Type Password:'
                                         rules={[{ required: true, message: "Please provide your Password again" }]}
-                                    >
-                                        <FormInput
-                                            name='re-password'
-                                            placeholder='Re Password'
-                                            type='password'
-                                            className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
-                                        />
-                                    </Form.Item>
-                                    
+                                        className="border custom-input text-white border-[#D9D9D9] w-full p-4 rounded bg-primary"
+                                    />
                                     <button type='submit' className='auth-button !text-primary !bg-white font-poppins py-4 !mt-12'>Log In</button>
                                 </Form>
                                 <p className='mt-4 !text-white description !text-left'>Already have an account ?<Link className='text-white underline' href='/login'> Log In</Link></p>

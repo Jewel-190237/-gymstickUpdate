@@ -181,43 +181,6 @@
   text-transform: capitalize;
 }
 
-// form input label styles
-.ant-row {
-  display: block;
-}
-.ant-form-item {
-  margin-bottom: 0;
-}
-.ant-form-item .ant-form-item-label {
-  text-align: left;
-  padding-bottom: 8px;
-}
-
-.ant-form-item .ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
-  display: inline-block;
-  margin-inline-end: 4px;
-  color: #ff4d4f;
-  font-size: 14px;
-  line-height: 1;
-  content: "*";
-}
-.ant-form-item .ant-form-item-label >label::after{
-  content: '';
-}
-
-.ant-form-item .ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
-  content: "";
-}
-
-.ant-form-item .ant-form-item-label>label {
-  color: #2B2B2B;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-transform: capitalize;
-}
-
 .ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
   border-color: #E67529;
   background-color: #E67529;
@@ -333,22 +296,113 @@
     2px -2px 0 white,
     -2px 2px 0 white,
     2px 2px 0 white;
-  font-weight: 1000;
+  font-weight: 800;
   display: inline-block;
 }
+
 // login input form style
 .custom-input::placeholder {
   color: white;
-  opacity: 1; 
+  opacity: 1;
 }
+
 .custom-input {
-  border: 0.5px solid white; 
-  outline: none; 
+  border: 0.5px solid white;
+  outline: none;
   transition: border-color 0.3s ease;
 }
 
 .custom-input:focus {
-  border-color: white; 
-  box-shadow: none; 
+  border-color: white;
+  box-shadow: none;
 }
 
+.login-form {
+  ::placeholder {
+    color: white;
+    opacity: 1;
+  }
+
+  input {
+    border: 0.5px solid white;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  :focus {
+    border-color: white;
+    box-shadow: none;
+  }
+
+  .ant-form-item .ant-form-item-label>label {
+    color: white;
+    font-weight: 500;
+  }
+
+  .ant-form-item .ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
+    display: inline-block;
+    margin-inline-end: 4px;
+    color: white;
+    font-size: 14px;
+    line-height: 1;
+    content: "*";
+  }
+  .ant-row {
+    display: block;
+  }
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+  .ant-form-item .ant-form-item-label {
+    text-align: left;
+    padding-bottom: 8px;
+  }
+}
+
+.checkout{
+  ::placeholder {
+    color: #534C4C;
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 1;
+  }
+
+  input {
+    border: 0.5px solid #D9D9D9;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  :focus {
+    border-color: #D9D9D9;
+    box-shadow: none;
+  }
+
+  .ant-form-item .ant-form-item-label>label {
+    color: #2B2B2B;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .ant-form-item .ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
+    display: inline-block;
+    margin-inline-end: 4px;
+    color: rgb(255, 0, 0);
+    font-size: 14px;
+    line-height: 1;
+    content: "*";
+  }
+  .ant-form-item .ant-form-item-label >label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+    content: '';
+  }
+  .ant-row {
+    display: block;
+  }
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+  .ant-form-item .ant-form-item-label {
+    text-align: left;
+    padding-bottom: 8px;
+  }
+}
