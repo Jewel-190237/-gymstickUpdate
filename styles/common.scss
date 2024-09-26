@@ -46,7 +46,6 @@
 
 
 // shop related styles
-
 .ant-pagination {
   width: 40px;
   height: 40px;
@@ -347,19 +346,22 @@
     line-height: 1;
     content: "*";
   }
+
   .ant-row {
     display: block;
   }
+
   .ant-form-item {
     margin-bottom: 0;
   }
+
   .ant-form-item .ant-form-item-label {
     text-align: left;
     padding-bottom: 8px;
   }
 }
 
-.checkout{
+.checkout {
   ::placeholder {
     color: #534C4C;
     font-size: 14px;
@@ -392,17 +394,43 @@
     line-height: 1;
     content: "*";
   }
-  .ant-form-item .ant-form-item-label >label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+
+  .ant-form-item .ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
     content: '';
   }
+
   .ant-row {
     display: block;
   }
+
   .ant-form-item {
     margin-bottom: 0;
   }
+
   .ant-form-item .ant-form-item-label {
     text-align: left;
     padding-bottom: 8px;
+  }
+}
+
+.slider-style {
+  .swiper-pagination {
+    position: static;
+    margin-top: 50px;
+  }
+  .swiper-pagination-bullet {
+    width: 20px;
+    color: #E67529;
+    height: 20px;
+    background: #E67529;
+    border-radius: 100%
+  }
+  .swiper-pagination-bullet-active {
+    width: 30px !important;
+    height: 20px !important;
+    border-radius: 40% !important;
+  }
+  .swipper-button{
+    @apply w-16 h-16 rounded-full box-shadow flex items-center border justify-center text-primary hover:bg-primary hover:text-white duration-500
   }
 }
